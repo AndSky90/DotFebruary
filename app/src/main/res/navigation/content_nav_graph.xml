@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_navigation_graph"
+    app:startDestination="@id/githubSearchFragment">
+
+
+
+
+    <fragment
+        android:id="@+id/githubSearchFragment"
+        android:name="com.example.dotfebruary.ui.fragment.githubSearch.GithubSearchFragment"
+        android:label="@string/fragment_github_search_label"
+        tools:layout="@layout/fragment_github_search" >
+        <action
+            android:id="@+id/action_githubSearchFragment_to_githubUserFragment"
+            app:destination="@id/githubUserFragment"
+            app:enterAnim="@anim/nav_anim_enter_slide"
+            app:exitAnim="@anim/nav_anim_exit_slide"
+            app:popEnterAnim="@anim/nav_anim_pop_enter_slide"
+            app:popExitAnim="@anim/nav_anim_pop_exit_slide" >
+            <argument
+                android:name="userName" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/githubUserFragment"
+        android:name="com.example.dotfebruary.ui.fragment.githubUser.GithubUserFragment"
+        android:label="@string/fragment_github_user_label"
+        tools:layout="@layout/fragment_github_user" >
+        <argument
+            android:name="KEY_USER_NAME"
+            app:argType="string" />
+    </fragment>
+
+
+    <!--
+
+        <fragment
+            android:id="@+id/nav_home"
+            android:name="com.example.dotfebruary.ui.home.HomeFragment"
+            android:label="@string/menu_home"
+            tools:layout="@layout/fragment_home">
+
+            <action
+                android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+                app:destination="@id/nav_home_second" />
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/nav_home_second"
+            android:name="com.example.dotfebruary.ui.home.HomeFragment"
+            android:label="@string/home_second"
+            tools:layout="@layout/fragment_home">
+            <action
+                android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+                app:destination="@id/nav_home" />
+
+            <argument
+                android:name="myArg"
+                app:argType="string" />
+        </fragment>
+
+    -->
+
+
+
+</navigation>

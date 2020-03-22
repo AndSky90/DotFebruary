@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DotFebruary</string>
+    <string name="menu_logout">Сменить аккаунт</string>
+    <string name="title_enter_the_app">Выполните ход в приложение</string>
+    <string name="menu_login">Вход в приложение</string>
+    <string name="menu_repo_search">Поиск репозиториев</string>
+    <string name="menu_user">Пользователь</string>
+    <string name="menu_splash" />
+    <string name="search">Поиск</string>
+    <string name="no_user_results">Нет подходящих пользователей</string>
+    <string name="error_loading_user_details">Не удалось загрузить информацию о пользователе</string>
+    <string name="error_loading_list">Не удалось загрузить данные</string>
+    <string name="end_of_list">Вы достигли конца списка</string>
+</resources>

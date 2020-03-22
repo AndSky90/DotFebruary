@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.examle.dotfebruary"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOGGING_ENABLED_BY_GRADLE", "false"
+        }
+        debug {
+            buildConfigField "boolean", "LOGGING_ENABLED_BY_GRADLE", "true"
+        }
+    }
+    buildToolsVersion = '29.0.3'
+// To inline the bytecode built with JVM target 1.8 into
+// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation 'androidx.fragment:fragment-ktx:1.2.3'
+    implementation "androidx.appcompat:appcompat:$appcompat_x"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_x"
+    //implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_x"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_x"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_x"
+    //implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+    //testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_ktx"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_ktx"
+
+    //Paging
+    implementation "android.arch.paging:runtime:1.0.1"
+
+    // Room
+   // implementation "androidx.room:room-runtime:$roomVersion"
+   // implementation "androidx.room:room-ktx:$roomVersion"
+   // kapt "androidx.room:room-compiler:$roomVersion"
+    //androidTestImplementation "androidx.room:room-testing:$roomVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    //Facebook
+    implementation "com.facebook.android:facebook-android-sdk:$facebook"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+
+    // RX
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android"
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rx_binding"
+
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$picasso"
+
+    // Test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}

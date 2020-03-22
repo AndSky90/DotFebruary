@@ -1,0 +1,43 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SplashActivityTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="UserCardView" parent="Theme.MaterialComponents">
+        <item name="cardElevation">3dp</item>
+        <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="cardCornerRadius">5dp</item>
+    </style>
+
+
+    <style name="Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TitleBold" parent="Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="SubtitleGrey" parent="Subtitle">
+        <item name="android:textColor">@color/colorGrey</item>
+    </style>
+</resources>
