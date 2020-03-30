@@ -136,7 +136,7 @@ class GithubSearchFragment : Fragment() {
         viewModel.requestState.observe(viewLifecycleOwner, Observer {
             if (it == IN_PROGRESS) {
                 stubMessageView.isVisible = false
-                loadingBar.isVisible = true
+                if (viewModel.isListEmpty()) loadingBar.isVisible = true
             } else {
                 loadingBar.isVisible = false
                 when {
