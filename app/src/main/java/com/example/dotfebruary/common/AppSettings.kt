@@ -8,4 +8,7 @@ object AppSettings {
     const val DEBOUNCE_SEARCH_MILLISECONDS : Long = 600
 
     const val LOG_TAG = "DotTestLog"
+    const val FACEBOOK_PROFILE_TABLE_NAME = "facebook_profile_table"
+    const val FACEBOOK_PROFILE_DB_NAME = "facebook_profile_db"
+
 }

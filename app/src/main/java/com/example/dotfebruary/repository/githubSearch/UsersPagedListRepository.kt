@@ -8,20 +8,21 @@ import com.example.dotfebruary.common.AppSettings.USERS_PAGINATION_SIZE
 import com.example.dotfebruary.model.GithubUser
 import com.example.dotfebruary.model.RequestState
 import com.example.dotfebruary.repository.GithubRetrofitApi
-import com.example.dotfebruary.repository.UserDataSource
-import com.example.dotfebruary.repository.UserDataSourceFactory
 import io.reactivex.disposables.CompositeDisposable
 
-class UsersPagedListRepository(private val api: GithubRetrofitApi) {
+class UsersPagedListRepository(
+    private val api: GithubRetrofitApi,
+    private val disposables: CompositeDisposable
+) : UsersPagedListRepositoryApi {
+    private lateinit var userPagedList: LiveData<PagedList<GithubUser>>
+    private var userDataSourceFactory: UserDataSourceFactory =
+        UserDataSourceFactory("", api, disposables)
 
-    lateinit var userPagedList: LiveData<PagedList<GithubUser>>
-    lateinit var userDataSourceFactory: UserDataSourceFactory
-
-    fun fetchUsersListPage(
-        searchQuery: String,
-        disposables: CompositeDisposable
+    override fun fetchUsersListPage(
+        searchQuery: String
     ): LiveData<PagedList<GithubUser>> {
-        userDataSourceFactory = UserDataSourceFactory(searchQuery, api, disposables)
+        userDataSourceFactory =
+            UserDataSourceFactory(searchQuery, api, disposables)
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
@@ -32,7 +33,7 @@ class UsersPagedListRepository(private val api: GithubRetrofitApi) {
         return userPagedList
     }
 
-    fun getRequestStates(): LiveData<RequestState> {
+    override fun getRequestStates(): LiveData<RequestState> {
         return Transformations.switchMap<UserDataSource, RequestState>(
             userDataSourceFactory.userLiveDataSource, UserDataSource::requestState
         )

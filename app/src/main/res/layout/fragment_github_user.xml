@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" alias="View"/>
 
         <variable
             name="user"
@@ -28,81 +27,88 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:setAvatarWithPicasso="@{user.avatarUrl}"
             tools:ignore="ContentDescription"
             tools:src="@drawable/ic_person_grey_24dp" />
 
         <TextView
             android:id="@+id/userName"
             style="@style/Title"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userImage"
-            tools:text="Username"
-            android:text="@{user.name}" />
-
+            app:setTextOrInvisible="@{user.name}"
+            tools:text="Username" />
 
         <TextView
             android:id="@+id/userLogin"
             style="@style/SubtitleGrey"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userName"
-            tools:text="Login"
-            android:text="@{user.login}" />
+            app:setTextOrInvisible="@{user.login}"
+            tools:text="Login" />
 
         <TextView
             android:id="@+id/userBio"
             style="@style/Subtitle"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_small_16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userLogin"
+            app:setTextOrInvisible="@{user.bio}"
             tools:text="Bio" />
+
 
         <TextView
             android:id="@+id/userCompany"
             style="@style/Subtitle"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_small_16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userBio"
+            app:setTextOrInvisible="@{user.company}"
             tools:text="Company" />
 
         <LinearLayout
             android:id="@+id/repoCountContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/margin_8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userCompany">
+            app:layout_constraintTop_toBottomOf="@id/userCompany"
+            tools:visibility="visible">
 
             <ImageView
                 android:id="@+id/githubImage"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="@dimen/icon_size_18dp"
+                android:layout_height="@dimen/icon_size_18dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_repository_black"
-                android:visibility="gone"
-                tools:ignore="ContentDescription"
-                tools:visibility="visible" />
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/userRepoCount"
                 style="@style/Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/margin_4dp"
+                android:text="@{user.publicRepos.toString()}"
                 tools:text="123" />
 
         </LinearLayout>
@@ -114,22 +120,23 @@
             android:layout_height="0dp"
             android:background="@color/colorWhite"
             android:gravity="center"
-            android:text="@string/no_user_results"
+            android:text="@string/state_no_user_results_title"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
+        <include
             android:id="@+id/loadingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
+            layout="@layout/loading_stub"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

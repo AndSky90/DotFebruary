@@ -1,4 +1,4 @@
-package com.example.dotfebruary.common
+package com.example.dotfebruary.network
 
 import com.example.dotfebruary.BuildConfig.LOGGING_ENABLED_BY_GRADLE
 import com.example.dotfebruary.common.AppSettings.BASE_URL

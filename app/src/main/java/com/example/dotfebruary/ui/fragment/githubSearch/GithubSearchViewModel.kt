@@ -5,41 +5,44 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
-import com.example.dotfebruary.common.NetworkProviderImpl
 import com.example.dotfebruary.model.GithubUser
 import com.example.dotfebruary.model.RequestState
+import com.example.dotfebruary.network.NetworkProviderApi
 import com.example.dotfebruary.repository.GithubRetrofitApi
 import com.example.dotfebruary.repository.githubSearch.UsersPagedListRepository
 import io.reactivex.disposables.CompositeDisposable
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class GithubSearchViewModel : ViewModel() {
+class GithubSearchViewModel : ViewModel(), KoinComponent {
+
+    private val network by inject<NetworkProviderApi>()
+    private val disposables = CompositeDisposable()
 
     private val repository = UsersPagedListRepository(
-        NetworkProviderImpl().getFeatureApiImpl(
-            GithubRetrofitApi::class.java
-        )
+        network.getFeatureApiImpl(GithubRetrofitApi::class.java),
+        disposables
     )
 
-    private val disposables = CompositeDisposable()
     private val queryString = MutableLiveData<String>()
-    val userPagedList: LiveData<PagedList<GithubUser>>
+    var searchText = ""
+    var searchViewExpanded = true
 
-    val requestState: LiveData<RequestState> by lazy {
-        repository.getRequestStates()
+    val userPagedList: LiveData<PagedList<GithubUser>> by lazy {
+        Transformations.switchMap(queryString) { repository.fetchUsersListPage(it) }
     }
 
-    init {
-        queryString.value = "chris"
-        userPagedList = Transformations.switchMap(queryString) {
-            repository.fetchUsersListPage(it, disposables)
-        }
+    val requestState: LiveData<RequestState> by lazy {
+        Transformations.switchMap(userPagedList) { repository.getRequestStates() }
     }
 
     fun requestNewSearch(searchQuery: String) {
         queryString.postValue(searchQuery)
     }
 
-    fun isListEmpty(): Boolean = userPagedList.value?.isEmpty() ?: true
+    fun isListEmpty(): Boolean {
+        return userPagedList.value?.isEmpty() ?: true
+    }
 
     override fun onCleared() {
         disposables.clear()

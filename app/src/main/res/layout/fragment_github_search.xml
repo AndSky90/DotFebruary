@@ -21,24 +21,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/emptyResultsView"
+        android:id="@+id/stubMessageView"
+        style="@style/Title"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorWhite"
         android:gravity="center"
-        android:visibility="gone"
-        android:text="@string/no_user_results"
+        android:text="@string/state_no_user_results_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:alpha="0.5" />
 
-    <ProgressBar
+    <include
         android:id="@+id/loadingBar"
+        layout="@layout/loading_stub"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

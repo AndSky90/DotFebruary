@@ -10,10 +10,5 @@
             android:icon="@drawable/ic_logout_black_24dp"
             android:title="@string/menu_logout" />
 
-        <item
-            android:id="@+id/action_github_search"
-            android:icon="@drawable/ic_search_black_24dp"
-            android:title="@string/menu_repo_search" />
-
     </group>
 </menu>

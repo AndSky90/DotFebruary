@@ -1,4 +1,4 @@
-package com.example.dotfebruary.common
+package com.example.dotfebruary.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

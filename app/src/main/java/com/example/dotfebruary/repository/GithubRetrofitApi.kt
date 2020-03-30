@@ -21,5 +21,4 @@ interface GithubRetrofitApi {
         @Path("userName") userName: String
     ) : Observable<GithubUserDetails>
 
-
 }

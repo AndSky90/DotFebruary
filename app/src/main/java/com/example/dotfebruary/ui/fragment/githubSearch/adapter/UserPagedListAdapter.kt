@@ -1,18 +1,17 @@
 package com.example.dotfebruary.ui.fragment.githubSearch.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dotfebruary.R
+import com.example.dotfebruary.databinding.AlertViewHolderBinding
+import com.example.dotfebruary.databinding.UserViewHolderBinding
 import com.example.dotfebruary.model.GithubUser
 import com.example.dotfebruary.model.RequestState
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_alert_view_holder.view.*
-import kotlinx.android.synthetic.main.user_view_holder.view.*
+
 
 class UserPagedListAdapter(
     private val onClick: (String) -> Unit
@@ -26,19 +25,21 @@ class UserPagedListAdapter(
     private var requestState = RequestState.SUCCESS
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(parent.context)
         return if (viewType == USER_VIEW_TYPE) {
-            val view = layoutInflater.inflate(R.layout.user_view_holder, parent, false)
-            UserItemViewHolder(view, onClick)
+            val binding: UserViewHolderBinding =
+                DataBindingUtil.inflate(inflater, R.layout.user_view_holder, parent, false)
+            UserItemViewHolder(binding, onClick)
         } else {
-            val view = layoutInflater.inflate(R.layout.list_alert_view_holder, parent, false)
-            AlertViewHolder(view)
+            val binding: AlertViewHolderBinding =
+                DataBindingUtil.inflate(inflater, R.layout.alert_view_holder, parent, false)
+            AlertViewHolder(binding)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == USER_VIEW_TYPE) {
-            (holder as UserItemViewHolder).bind(getItem(position))
+            (holder as UserItemViewHolder).bind(getItem(position)!!)
         } else {
             (holder as AlertViewHolder).bind(requestState)
         }
@@ -46,7 +47,7 @@ class UserPagedListAdapter(
 
 
     private fun hasExtraRow(): Boolean =
-        requestState != RequestState.SUCCESS
+        requestState != RequestState.SUCCESS && requestState != RequestState.FORBIDDEN
 
 
     override fun getItemCount(): Int =
@@ -74,7 +75,6 @@ class UserPagedListAdapter(
             notifyItemChanged(itemCount - 1)
         }
     }
-
 
     class UserDiffCallback : DiffUtil.ItemCallback<GithubUser>() {
         override fun areItemsTheSame(oldItem: GithubUser, newItem: GithubUser) =

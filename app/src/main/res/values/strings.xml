@@ -1,41 +1,33 @@
 <resources>
-    <string name="app_name">DotFebruary</string>
+    <string name="app_name" translatable="false">DotFebruary</string>
     <string name="application_label" translatable="false">GitHubDotFebruary</string>
     <string name="app_label" translatable="false">GitHubDotTest</string>
+    <string name="fragment_github_user_label" translatable="false">githubUserFragment</string>
+    <string name="fragment_github_search_label" translatable="false">githubSearchFragment</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="facebook_app_id" translatable="false">508803756709055</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb508803756709055</string>
 
-    <string name="title_enter_the_app">Please, log in</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="ok" translatable="false">OK</string>
 
-    <string name="menu_gallery">Gallery</string>
+    <string name="enter_the_app_title">Please, log in</string>
+    <string name="nav_header_desc">User Avatar</string>
 
-    <string name="nav_header_title" translatable="false">User name</string>
-    <string name="nav_header_subtitle" translatable="false">User email</string>
-    <string name="nav_header_desc" translatable="false">Navigation header</string>
-
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_login">Login</string>
-    <string name="menu_repo_search">Search repository</string>
-    <string name="menu_user">Github User</string>
-
-    <string name="home_second">Home Second</string>
-
+    <string name="menu_repo_search_title">Search repository</string>
     <string name="menu_logout">Logout</string>
-    <string name="menu_splash" />
-    <string name="search">Search</string>
-    <string name="no_user_results">No users for this search</string>
-    <string name="error_loading_user_details">Unable to load user data</string>
+
+    <string name="search_hint">Find github users</string>
 
     <string name="error_loading_list">Unable to load data</string>
     <string name="end_of_list">You have reached the end</string>
+
+    <string name="state_no_user_results_title">No users for this search</string>
     <string name="error_facebook_login_title">Logging error</string>
     <string name="error_facebook_login_message">Error log into account</string>
-    <string name="ok">OK</string>
-    <string name="fragment_github_user_label">githubUserFragment</string>
-    <string name="fragment_github_search_label">githubSearchFragment</string>
+    <string name="error_loading_user_details">Unable to load user data</string>
+
+
+    <string name="error_forbidden_search_title">Too much search queries, try later</string>
 </resources>

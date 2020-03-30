@@ -53,22 +53,22 @@ data class GithubUserDetails(
     var receivedEventsUrl: String = "",
 
     @SerializedName("type")
-    var type: String = "",
+    var type: String? = null,
 
     @SerializedName("site_admin")
     var siteAdmin: Boolean = false,
 
     @SerializedName("name")
-    var name: String = "",
+    var name: String? = null,
 
     @SerializedName("company")
-    var company: String = "",
+    var company: String? = null,
 
     @SerializedName("blog")
-    var blog: String = "",
+    var blog: String? = null,
 
     @SerializedName("location")
-    var location: String = "",
+    var location: String? = null,
 
     @SerializedName("email")
     var email: String? = null,
@@ -77,10 +77,10 @@ data class GithubUserDetails(
     var hireable: Boolean = false,
 
     @SerializedName("bio")
-    var bio: String = "",
+    var bio:  String? = null,
 
     @SerializedName("public_repos")
-    var publicRepos: Int = 0,
+    var publicRepos: Int? = 0,
 
     @SerializedName("public_gists")
     var publicGists: Int = 0,

@@ -17,13 +17,16 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
-            android:value="false"/>
-        <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
-            android:value="false"/>
+        <meta-data
+            android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+            android:value="false" />
+        <meta-data
+            android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
+            android:value="false" />
 
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
+        <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -43,15 +46,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.SplashActivity"
+        <activity
+            android:name=".ui.activity.splash.SplashActivity"
             android:theme="@style/SplashActivityTheme">
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
